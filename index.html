@@ -4,14 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Casamiento</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400&display=swap">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Lora', serif;
             margin: 0;
             background-color: #f7f4ef;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 150px;
+            height: auto;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            font-size: 36px;
+            margin: 10px 0;
         }
         .navbar {
             width: 100%;
@@ -21,6 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
         }
         .navbar a {
             text-decoration: none;
@@ -29,15 +46,21 @@
             font-weight: bold;
             cursor: pointer;
         }
-        .card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .container {
             width: 90%;
-            max-width: 500px;
-            padding: 20px;
-            text-align: center;
+            max-width: 800px;
             margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .card {
+            text-align: center;
+        }
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #333;
         }
         .button {
             background-color: #bfa25e;
@@ -49,6 +72,8 @@
             display: inline-block;
             border-radius: 5px;
             cursor: pointer;
+            font-family: 'Lora', serif;
+            font-weight: bold;
         }
         .button:hover {
             background-color: #a08953;
@@ -101,17 +126,24 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <img src="https://www.creativefabrica.com/wp-content/uploads/2023/02/12/Beautiful-Gold-Rose-Bouquet-With-Green-Leaves-Buds-And-Thorns-60885177-1.png" alt="Logo">
+        <h1>Invitación de Casamiento</h1>
+    </div>
     <div class="navbar">
         <a onclick="openModal('detailsModal')">Detalles</a>
         <a onclick="openModal('contactModal')">Contacto</a>
+        <a href="https://forms.gle/tu-formulario" target="_blank" class="button">Recomendar Canciones</a>
     </div>
-    <div class="card">
-        <h2>Estás invitado a nuestro casamiento!</h2>
-        <p>Estamos encantados de invitarte a nuestra boda. Esperamos verte allí.</p>
-        <div id="countdown"></div>
-        <p class="value">Valor de la tarjeta: $100</p>
-        <a href="https://maps.app.goo.gl/DpokS57EyHyiriA28" target="_blank" class="button">Ubicación</a>
-        <a href="https://wa.me/3517581586?text=Confirmo+mi+asistencia+al+casamiento" target="_blank" class="button">Confirmar Asistencia</a>
+    <div class="container">
+        <div class="card">
+            <h2>Casamiento</h2>
+            <p>Estamos encantados de invitarte a nuestra boda. Esperamos verte allí.</p>
+            <div id="countdown"></div>
+            <p class="value">Valor de la tarjeta: $35000</p>
+            <a href="https://maps.app.goo.gl/DpokS57EyHyiriA28" target="_blank" class="button">Ubicación</a>
+            <a href="https://wa.me/1234567890?text=Confirmo+mi+asistencia+al+casamiento" target="_blank" class="button">Confirmar Asistencia</a>
+        </div>
     </div>
 
     <!-- Detalles Modal -->
@@ -134,7 +166,7 @@
 
     <script>
         // Fecha del evento
-        var eventDate = new Date("Dec 14, 2024 22:00:00").getTime();
+        var eventDate = new Date("Dec 14, 2024 21:00:00").getTime();
 
         // Actualizar la cuenta regresiva cada segundo
         var x = setInterval(function() {
