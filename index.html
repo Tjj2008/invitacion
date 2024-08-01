@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Casamiento</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f7f4ef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #bfa25e;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #bfa25e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 10px 0;
+            display: inline-block;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #a08953;
+        }
+        #countdown {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .value {
+            font-size: 20px;
+            color: #bfa25e;
+            margin: 20px 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a onclick="openModal('detailsModal')">Detalles</a>
+        <a onclick="openModal('contactModal')">Contacto</a>
+    </div>
+    <div class="card">
+        <h2>Estás invitado a nuestro casamiento!</h2>
+        <p>Estamos encantados de invitarte a nuestra boda. Esperamos verte allí.</p>
+        <div id="countdown"></div>
+        <p class="value">Valor de la tarjeta: $100</p>
+        <a href="https://maps.app.goo.gl/DpokS57EyHyiriA28" target="_blank" class="button">Ubicación</a>
+        <a href="https://wa.me/3517581586?text=Confirmo+mi+asistencia+al+casamiento" target="_blank" class="button">Confirmar Asistencia</a>
+    </div>
+
+    <!-- Detalles Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('detailsModal')">&times;</span>
+            <h2>Temática de Vestimenta</h2>
+            <p>Por favor, vístete de gala con colores blanco y dorado.</p>
+        </div>
+    </div>
+
+    <!-- Contacto Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Contacto</h2>
+            <p>Para cualquier consulta, por favor llama al: 123-456-7890</p>
+        </div>
+    </div>
+
+    <script>
+        // Fecha del evento
+        var eventDate = new Date("Dec 14, 2024 22:00:00").getTime();
+
+        // Actualizar la cuenta regresiva cada segundo
+        var x = setInterval(function() {
+
+            // Obtener la fecha y hora actual
+            var now = new Date().getTime();
+
+            // Encontrar la distancia entre ahora y la fecha del evento
+            var distance = eventDate - now;
+
+            // Calcular días, horas, minutos y segundos
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar el resultado en el elemento con id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " +
+                minutes + "m " + seconds + "s ";
+
+            // Si la cuenta regresiva ha terminado, mostrar un mensaje
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡El evento ha comenzado!";
+            }
+        }, 1000);
+
+        // Funciones para abrir y cerrar modales
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
