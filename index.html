@@ -62,6 +62,12 @@
             font-family: 'Playfair Display', serif;
             color: #333;
         }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
         .button {
             background-color: #bfa25e;
             color: white;
@@ -81,6 +87,8 @@
         #countdown {
             font-size: 24px;
             margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            color: #bfa25e;
         }
         .value {
             font-size: 20px;
@@ -133,7 +141,6 @@
     <div class="navbar">
         <a onclick="openModal('detailsModal')">Detalles</a>
         <a onclick="openModal('contactModal')">Contacto</a>
-        <a href="https://forms.gle/tu-formulario" target="_blank" class="button">Recomendar Canciones</a>
     </div>
     <div class="container">
         <div class="card">
@@ -141,8 +148,14 @@
             <p>Estamos encantados de invitarte a nuestra boda. Esperamos verte allí.</p>
             <div id="countdown"></div>
             <p class="value">Valor de la tarjeta: $35000</p>
+        </div>
+        <div class="button-container">
+            <img src="https://via.placeholder.com/150" alt="Imagen de ubicación">
             <a href="https://maps.app.goo.gl/DpokS57EyHyiriA28" target="_blank" class="button">Ubicación</a>
+            <img src="https://via.placeholder.com/150" alt="Imagen de confirmación">
             <a href="https://wa.me/1234567890?text=Confirmo+mi+asistencia+al+casamiento" target="_blank" class="button">Confirmar Asistencia</a>
+            <img src="https://via.placeholder.com/150" alt="Imagen de canciones">
+            <a href="https://forms.gle/tu-formulario" target="_blank" class="button">Recomendar Canciones</a>
         </div>
     </div>
 
