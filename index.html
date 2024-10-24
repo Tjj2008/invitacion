@@ -9,7 +9,7 @@
         body {
             font-family: 'Lora', serif;
             margin: 0;
-            background-color: #f7f4ef;
+            background-color: #f5f1e9; /* Beige */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -25,13 +25,13 @@
         }
         .header h1 {
             font-family: 'Playfair Display', serif;
-            color: #333;
+            color: #6e5e42; /* Dorado medio pastel */
             font-size: 36px;
             margin: 10px 0;
         }
         .navbar {
             width: 100%;
-            background-color: #ffffff;
+            background-color: #f7f3e9; /* Beige más claro */
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -41,7 +41,7 @@
         }
         .navbar a {
             text-decoration: none;
-            color: #bfa25e;
+            color: #6e5e42; /* Dorado medio pastel */
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
@@ -51,7 +51,7 @@
             max-width: 800px;
             margin-top: 20px;
             padding: 20px;
-            background: white;
+            background: #f7f3e9; /* Beige más claro */
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
@@ -60,7 +60,7 @@
         }
         .card h2 {
             font-family: 'Playfair Display', serif;
-            color: #333;
+            color: #6e5e42; /* Dorado medio pastel */
         }
         .button-container {
             display: flex;
@@ -69,7 +69,7 @@
             margin-top: 20px;
         }
         .button {
-            background-color: #bfa25e;
+            background-color: #6e5e42; /* Dorado medio pastel */
             color: white;
             border: none;
             padding: 10px 20px;
@@ -82,10 +82,10 @@
             font-weight: bold;
         }
         .button:hover {
-            background-color: #a08953;
+            background-color: #5e5037; /* Dorado más oscuro */
         }
         .button-container img {
-            width: 100px; /* Ajusta este valor según el tamaño deseado */
+            width: 100px;
             height: auto;
             margin-bottom: 10px;
         }
@@ -93,11 +93,11 @@
             font-size: 24px;
             margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
-            color: #bfa25e;
+            color: #6e5e42; /* Dorado medio pastel */
         }
         .value {
             font-size: 20px;
-            color: #bfa25e;
+            color: #6e5e42; /* Dorado medio pastel */
             margin: 20px 0;
         }
         .modal {
@@ -136,6 +136,12 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .heading {
+            font-size: 28px;
+            color: #6e5e42; /* Dorado medio pastel */
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
     </style>
 </head>
 <body>
@@ -151,6 +157,7 @@
         <div class="card">
             <h2>Casamiento de Isabel y Jorge</h2>
             <p>Estamos encantados de invitarte a nuestra boda. Esperamos verte allí.</p>
+            <h3 class="heading">¡Ya falta poco!</h3>
             <div id="countdown"></div>
             <p class="value">Valor de la tarjeta: $35000</p>
             <p class="value">Menores de 5 a 9 años: $10000</p>
@@ -158,10 +165,8 @@
         <div class="button-container">
             <img src="https://img.freepik.com/premium-vector/golden-marker-location-icon-vector-illustration-golden-map-pointer-isolated-white-background_118339-1544.jpg?w=2000" alt="Imagen de ubicación">
             <a href="https://maps.app.goo.gl/DpokS57EyHyiriA28" target="_blank" class="button">Ubicación</a>
-            <img src="https://i.pinimg.com/originals/86/29/8c/86298c42d6d6c25c9ec438b6b9464b54.png" alt="Imagen de confirmación">
-            <a href="https://wa.me/3513732851?text=Confirmo+mi+asistencia+al+casamiento" target="_blank" class="button">Confirmar Asistencia</a>
-            <img src="https://static.vecteezy.com/system/resources/previews/017/051/627/non_2x/music-note-3d-icon-isolated-with-transparent-background-gold-texture-3d-rendering-free-png.png" alt="Imagen de canciones">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIzE0lWbwiMQWgNCB98SsAKUCVob39z0_02NytH9hwdWPwrA/viewform?usp=sf_link" target="_blank" class="button">Recomendar Canciones</a>
+            <img src="https://i.pinimg.com/originals/86/29/8c/86298c42d6d6c25c9ec438b6b9464b54.png" alt="Imagen de pago">
+            <a onclick="openModal('paymentModal')" class="button">Pagar Tarjeta</a>
         </div>
     </div>
 
@@ -180,6 +185,16 @@
             <span class="close" onclick="closeModal('contactModal')">&times;</span>
             <h2>Contacto</h2>
             <p>Para cualquier consulta, por favor llama al: 3513732851</p>
+        </div>
+    </div>
+
+    <!-- Pago Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('paymentModal')">&times;</span>
+            <h2>Pagar Tarjeta</h2>
+            <h3>Transferir a ISABELJOFRE339G.UALA</h3>
+            <a href="https://wa.me/3516178752" target="_blank" class="button">Enviar comprobante</a>
         </div>
     </div>
 
@@ -213,20 +228,14 @@
             }
         }, 1000);
 
-        // Funciones para abrir y cerrar modales
+        // Función para abrir el modal
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "flex";
         }
 
+        // Función para cerrar el modal
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
-        }
-
-        // Cerrar modal al hacer clic fuera del contenido
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
-            }
         }
     </script>
 </body>
